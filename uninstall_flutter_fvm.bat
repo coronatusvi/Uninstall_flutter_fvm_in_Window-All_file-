@@ -1,23 +1,3 @@
-# Uninstall_flutter_fvm_in_Window-All_file
-
-**Important:** Before you start, make sure you have admin privileges (open Command Prompt as administrator). You can do this by:
-
-1. Pressing the Windows key and typing "cmd".
-2. Right-clicking on "Command Prompt" and selecting "Run as administrator".
-
-**1. Uninstall Flutter (if installed via installer):**
-
-- You can't directly uninstall an application through the command line if it was installed using a .exe installer. You would still need to do that through Control Panel as previously described. However if you wish to locate the install location of a program by the name of the executable (in this case Flutter) you can use this command
-
-```cmd
-where flutter
-```
-
-This will show you where the `flutter` executable is located, you can then navigate to the containing directory in File Explorer, and uninstall it from the Control Panel. If you did not install flutter using an installer proceed to step 3.
-
-**2. Uninstall FVM:**
-
-```cmd
 :: Go to the user profile directory
 cd %USERPROFILE%
 
@@ -69,11 +49,7 @@ for /f "tokens=1* delims==" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Co
 
 
 echo FVM uninstalled (if present).
-```
 
-**3. Remove Flutter SDK (if not installed via installer):**
-
-```cmd
 :: Go to user profile directory
  cd %USERPROFILE%
 
@@ -128,11 +104,7 @@ echo FVM uninstalled (if present).
 
 
  echo Flutter SDK uninstalled (if present).
-```
 
-**4. Remove Flutter Cache:**
-
-```cmd
 :: Go to the Local AppData directory
  cd %LOCALAPPDATA%
  :: Try to remove the cache directory
@@ -143,31 +115,3 @@ echo FVM uninstalled (if present).
       echo Flutter cache directory not found
   )
   echo Flutter cache cleared (if present).
-```
-
-**How to use this:**
-
-1.  **Copy the code:** Copy the appropriate block of code (or all of them) into a text editor like Notepad.
-2.  **Save as `.bat`:** Save the file with a `.bat` extension (e.g., `uninstall_flutter_fvm.bat`).
-3.  **Run as administrator:** Right-click the `.bat` file and select "Run as administrator".
-4.  **Review output:** The script will print messages indicating what it's doing, like deleting directories and removing environment variables.
-
-**Explanation of the commands:**
-
-- `cd`: Change directory. `%USERPROFILE%` is a variable for your user directory.
-- `rd /s /q`: Remove directory recursively and quietly.
-- `reg delete`: Delete a registry entry, which is where environment variables are stored.
-- `reg add`: Add or modify a registry entry.
-- `findstr /i /c:string`: Searches for a string in a case insensitive manner
-- `for /f`: Loops through the output of a command.
-- `if exist`: Checks if a directory exists.
-- `echo`: Prints a message.
-- `>nul 2>&1`: Silences output from a command.
-
-**Important:**
-
-- **Be careful:** These commands will remove data. Review the output and ensure you are removing the intended files and directories.
-- **Backup (optional):** If you are unsure, back up any important data first before running these commands.
-- **Reboot:** A reboot after removing environment variables and directories is good practice to ensure all the changes take effect.
-
-This approach provides you with a command-line way of removing Flutter and FVM. Let me know if you have any further questions!
